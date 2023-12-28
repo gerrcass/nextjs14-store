@@ -7,10 +7,14 @@ export const Header = () => {
       <nav>
         <ul className={styles.Header__list}>
           <li>
-            <Link href="/">Home</Link>
+            <Link href="/" scroll={false}>
+              Home
+            </Link>
           </li>
           <li>
-            <Link href="/store">Store</Link>
+            <Link href="/store" scroll={false}>
+              Store
+            </Link>
           </li>
         </ul>
       </nav>
