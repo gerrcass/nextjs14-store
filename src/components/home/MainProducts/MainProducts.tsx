@@ -21,7 +21,7 @@ const getProducts = async () => {
 export const MainProducts = async () => {
   const products = await getProducts();
 
-  throw Error("test");
+  // throw Error("test");
 
   return (
     <section className={styles.MainProducts}>
