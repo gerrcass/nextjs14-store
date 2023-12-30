@@ -1,6 +1,8 @@
 import { env } from "app/config/env";
 import { shopifyUrls } from "./urls";
 
+//📌 https://shopify.dev/docs/api/admin-rest/2023-10/resources/product
+
 export const getProducts = async () => {
   try {
     const response = await fetch(shopifyUrls.products.all, {
