@@ -3,15 +3,34 @@ import { shopifyUrls } from "./urls";
 
 //📌 https://shopify.dev/docs/api/admin-rest/2023-10/resources/product
 
-export const getProducts = async () => {
+export const getProducts = async (id?: string): Promise<ProductType[]> => {
   try {
-    const response = await fetch(shopifyUrls.products.all, {
+    const apiUrl = id
+      ? `${shopifyUrls.products.all}?ids=${id}`
+      : shopifyUrls.products.all;
+
+    const response = await fetch(apiUrl, {
       headers: new Headers({
         "X-Shopify-Access-Token": env.SHOPIFY_TOKEN,
       }),
     });
     const { products } = await response.json();
-    return products;
+
+    const transformedProducts = products.map((product: any) => {
+      return {
+        id: product.id,
+        gql_id: product.variants[0].admin_graphql_api_id,
+        title: product.title,
+        description: product.body_html,
+        price: product.variants[0].price,
+        image: product.images[0].src,
+        quantity: product.variants[0].inventory_quantity,
+        handle: product.handle,
+        tags: product.tags,
+      };
+    });
+
+    return transformedProducts;
   } catch (error) {
     console.log(error);
   }
