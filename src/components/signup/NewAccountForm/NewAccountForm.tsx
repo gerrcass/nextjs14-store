@@ -9,6 +9,9 @@ export const NewAccountForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    // validate that passwords match here before sending server action
+
     const formData = new FormData(event.target);
     await handleCreateUser(formData);
   };
