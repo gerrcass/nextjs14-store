@@ -25,17 +25,16 @@ export const createAccessToken = async (email: string, password: string) => {
         expiresAt: '2024-02-11T22:51:21Z'
         }
   */
+  if (!customerAccessTokenCreate?.customerAccessToken) return null;
 
   const { accessToken, expiresAt } =
     customerAccessTokenCreate?.customerAccessToken;
 
-  if (accessToken) {
-    cookieStore.set("accessToken", accessToken, {
-      path: "/",
-      expires: new Date(expiresAt),
-      httpOnly: true,
-      sameSite: "strict",
-    });
-    return accessToken;
-  }
+  cookieStore.set("accessToken", accessToken, {
+    path: "/",
+    expires: new Date(expiresAt),
+    httpOnly: true,
+    sameSite: "strict",
+  });
+  return accessToken;
 };
