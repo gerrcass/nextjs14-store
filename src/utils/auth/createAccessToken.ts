@@ -25,6 +25,7 @@ export const createAccessToken = async (email: string, password: string) => {
         expiresAt: '2024-02-11T22:51:21Z'
         }
   */
+  console.log("👀 customerAccessTokenCreate: ", customerAccessTokenCreate);
   if (!customerAccessTokenCreate?.customerAccessToken) return null;
 
   const { accessToken, expiresAt } =
