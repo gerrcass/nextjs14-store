@@ -26,7 +26,10 @@ export const createAccessToken = async (email: string, password: string) => {
         }
   */
   console.log("👀 customerAccessTokenCreate: ", customerAccessTokenCreate);
-  if (!customerAccessTokenCreate?.customerAccessToken) return null;
+  if (!customerAccessTokenCreate?.customerAccessToken) {
+    console.log("❌ Something went wrong creating the access token");
+    return null;
+  }
 
   const { accessToken, expiresAt } =
     customerAccessTokenCreate?.customerAccessToken;

@@ -11,7 +11,7 @@ interface ShoppingCartItemProps {
 export const ShoppingCartItem = ({ item }: ShoppingCartItemProps) => {
   const { removeCartItem } = useShoppingCart();
 
-  console.log("🚧item:", item);
+  // console.log("🚧item:", item);
 
   return (
     <div className={styles.ShoppingCartItem}>

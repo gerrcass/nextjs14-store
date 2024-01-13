@@ -28,6 +28,12 @@ export const handleCreateUser = async (formData: FormData) => {
     variables
   );
 
+  if (!customerCreate) {
+    console.log("❌ Something went wrong creating the user");
+    return null;
+  }
+  console.log("✅ customerCreate: ", customerCreate);
+
   const { customer } = customerCreate;
 
   if (customer?.firstName) {
@@ -40,12 +46,16 @@ export const handleCreateUser = async (formData: FormData) => {
 };
 
 export const handleLogin = async (formData: FormData) => {
-  const formDataObject = Object.fromEntries(formData);
+  const { email, password } = Object.fromEntries(formData);
   const accesToken = await createAccessToken(
-    formDataObject.email as string,
-    formDataObject.password as string
+    email as string,
+    password as string
   );
-  console.log("🚧: ", { accesToken, formDataObject });
+  console.log("🚧: ", {
+    accesToken,
+    email,
+    password,
+  });
   if (accesToken) {
     redirect("/store");
   }
