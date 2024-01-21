@@ -1,5 +1,4 @@
 "use client";
-
 import { useChat } from "ai/react";
 import styles from "./Chat.module.sass";
 
@@ -16,30 +15,30 @@ export const Chat = (props: { agent: string }) => {
 
   return (
     <main className={styles.Chat}>
-      <section className="mb-auto m">
-        {messages
-          .filter((m) => m.role !== "system")
-          .map((m) => (
-            <div className="mb-4" key={m.id}>
-              {m.role === "user" ? "User: " : "AI: "}
-              {m.content}
-            </div>
-          ))}
-      </section>
-      <form className="flex space-x-4" onSubmit={handleSubmit}>
+      <h1 className={styles.Chat__title}>Ask anything, buy everything</h1>
+      <form onSubmit={handleSubmit} className={styles.Chat__form}>
         <input
-          className="rounded-md p-2 text-black"
+          className={styles.Chat__input}
           value={input}
           onChange={handleInputChange}
-          placeholder="Say something..."
+          placeholder="What would you like to buy?"
         />
-        <button
-          className="border-solid border-2 border-white p-2 rounded-md"
-          type="submit"
-        >
-          Send
-        </button>
+        <button className={styles.Chat__button}>Send</button>
       </form>
+      <section className={styles.Chat__messages}>
+        {messages
+          .filter((m) => m.role !== "system")
+          .map((m) => {
+            return (
+              <span key={m.id} className={styles.Chat__message}>
+                <div className={styles.Chat__message__icon}>
+                  {m.role === "assistant" ? "🤖" : "😊"}
+                </div>
+                <div>{m.content}</div>
+              </span>
+            );
+          })}
+      </section>
     </main>
   );
 };

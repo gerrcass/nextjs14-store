@@ -8,6 +8,14 @@ import { createUserMutation } from "app/graphql/mutations/createUserMutation";
 import { createAccessToken } from "app/utils/auth/createAccessToken";
 import { validateAccessToken } from "app/utils/auth/validateAccessToken";
 
+type CustomerCreate = {
+  customerCreate: {
+    customer: {
+      firstName: string;
+      email: string;
+    };
+  };
+};
 export const handleCreateUser = async (formData: FormData) => {
   const formDataObject = Object.fromEntries(formData);
   // delete formDataObject["password_confirmation"];
@@ -23,7 +31,7 @@ export const handleCreateUser = async (formData: FormData) => {
     },
   };
   // const { customerCreate, customerUserErrors } = await graphqlClient.request(
-  const { customerCreate } = await graphqlClient.request(
+  const { customerCreate }: CustomerCreate = await graphqlClient.request(
     createUserMutation,
     variables
   );

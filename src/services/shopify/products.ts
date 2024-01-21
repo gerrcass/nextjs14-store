@@ -1,14 +1,13 @@
 import { env } from "app/config/env";
 import { shopifyUrls } from "./urls";
 
-//📌 https://shopify.dev/docs/api/admin-rest/2023-10/resources/product
+// https://shopify.dev/docs/api/admin-rest/2023-10/resources/product
 
-export const getProducts = async (id?: string): Promise<ProductType[]> => {
+export const getProducts = async (id?: string) => {
   try {
     const apiUrl = id
       ? `${shopifyUrls.products.all}?ids=${id}`
       : shopifyUrls.products.all;
-
     const response = await fetch(apiUrl, {
       headers: new Headers({
         "X-Shopify-Access-Token": env.SHOPIFY_TOKEN,
@@ -29,7 +28,6 @@ export const getProducts = async (id?: string): Promise<ProductType[]> => {
         tags: product.tags,
       };
     });
-
     return transformedProducts;
   } catch (error) {
     console.log(error);
