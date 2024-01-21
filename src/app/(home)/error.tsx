@@ -10,7 +10,7 @@ interface ErrorProps {
 export default function Error({ error, reset }: ErrorProps) {
   useEffect(() => {
     //good place to send error to analytics (observability / monitoring tools)
-    console.log(error);
+    // console.log(error);
   }, []);
 
   return (

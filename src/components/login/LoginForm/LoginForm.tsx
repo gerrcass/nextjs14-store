@@ -3,7 +3,7 @@ import { handleLogin } from "app/actions";
 import styles from "./LoginForm.module.sass";
 
 export const LoginForm = () => {
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: any) => {
     const formData = new FormData(event.target);
     event.preventDefault();
     await handleLogin(formData);

@@ -27,7 +27,7 @@ export default async function Category(props: CategoryProps) {
 
     products = await getCollectionProducts(selectedCollectionId);
   } else {
-    products = await getProducts();
+    products = (await getProducts()) || [];
   }
 
   return <ProductsWrapper products={products} />;

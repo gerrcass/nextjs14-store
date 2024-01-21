@@ -3,7 +3,9 @@ import { shopifyUrls } from "./urls";
 
 //📌 https://shopify.dev/docs/api/admin-rest/2023-10/resources/product
 
-export const getProducts = async (id?: string): Promise<ProductType[]> => {
+export const getProducts = async (
+  id?: string
+): Promise<ProductType[] | undefined> => {
   try {
     const apiUrl = id
       ? `${shopifyUrls.products.all}?ids=${id}`

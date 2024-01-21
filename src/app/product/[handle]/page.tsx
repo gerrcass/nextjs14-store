@@ -12,6 +12,7 @@ interface ProductPageProps {
 export async function generateMetadata({ searchParams }: ProductPageProps) {
   const id = searchParams.id;
   const products = await getProducts(id);
+  if (!products) return null;
 
   return {
     title: `${products[0].title} | Future World`,
@@ -30,6 +31,7 @@ export async function generateMetadata({ searchParams }: ProductPageProps) {
 export default async function ProductPage({ searchParams }: ProductPageProps) {
   const id = searchParams.id;
   const products = await getProducts(id);
+  if (!products) return null;
 
   if (!id) redirect("/store");
 

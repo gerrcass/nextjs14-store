@@ -4,6 +4,7 @@ import { createAgent } from "app/utils/openai/createAgent";
 
 export default async function ChatPage() {
   const products = await getProducts();
+  if (!products) return null;
   const productTitles = products.map((product) => product.title);
   const flatProductTitles = productTitles.join("\n");
   const agent = createAgent(flatProductTitles);

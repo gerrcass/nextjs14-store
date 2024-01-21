@@ -7,7 +7,7 @@ export const createAccessToken = async (email: string, password: string) => {
 
   const graphqlClient = GraphQLClientSingleton.getInstance().getClient();
 
-  const { customerAccessTokenCreate } = await graphqlClient.request(
+  const { customerAccessTokenCreate }: any = await graphqlClient.request(
     customerAccessTokenCreateMutation,
     {
       email,
