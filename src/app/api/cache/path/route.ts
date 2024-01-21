@@ -1,6 +1,8 @@
 import { env } from "app/config/env";
 import { revalidatePath } from "next/cache";
 
+export const runtime = "edge";
+
 export async function POST(request: Request) {
   const { path, token } = await request.json();
 

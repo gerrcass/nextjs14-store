@@ -1,5 +1,7 @@
 import styles from "./MyAccount.module.sass";
 
+export const runtime = "edge";
+
 export default async function MyAccountPage() {
   return (
     <div>

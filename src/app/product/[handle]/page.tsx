@@ -3,6 +3,8 @@ import { ProductView } from "app/components/product/ProductView";
 import { getProducts } from "app/services/shopify/products";
 import sanitizeHtml from "sanitize-html";
 
+export const runtime = "edge";
+
 interface ProductPageProps {
   searchParams: {
     id: string;

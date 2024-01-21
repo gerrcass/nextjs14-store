@@ -2,6 +2,8 @@ import { Chat } from "app/components/chat";
 import { getProducts } from "app/services/shopify/products";
 import { createAgent } from "app/utils/openai/createAgent";
 
+export const runtime = "edge";
+
 export default async function ChatPage() {
   const products = await getProducts();
   const productTitles = products.map(
